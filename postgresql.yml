@@ -1,8 +1,3 @@
-#echo -e "${YC}Install PostgreSQL${NC}"
-#dnf -qy module disable postgresql &>>$OUTPUT
-#dnf install -y postgresql16-server postgresql16 &>>$OUTPUT
-#status_check
-#
 #echo -e "${YC}Initialize Database${NC}"
 #/usr/pgsql-16/bin/postgresql-16-setup initdb &>>$OUTPUT
 #status_check
@@ -42,5 +37,12 @@
           - "@postgresql:16/client"
         state: present
 
+    - name: Initialize Database
+      ansible.builtin.shell: /usr/pgsql-16/bin/postgresql-16-setup initdb
 
+    - name: Start PostgreSQL Service
+      ansible.builtin.systemd_service:
+        name: postgresql-16
+        state: started
+        enabled: yes
 
