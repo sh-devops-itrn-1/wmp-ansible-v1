@@ -55,3 +55,8 @@
         dest: /usr/share/nginx
         remote_src: yes
 
+    - name: Build frontend
+      ansible.builtin.shell: npm ci ; npm run build ; mv dist html
+      args:
+        chdir: /usr/share/nginx/
+
