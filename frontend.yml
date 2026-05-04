@@ -32,6 +32,7 @@
       ansible.builtin.dnf:
         name: '@nginx:1.26'
         state: present
+
     - name: Copy nginx config file
       ansible.builtin.copy:
         src: nginx.conf
