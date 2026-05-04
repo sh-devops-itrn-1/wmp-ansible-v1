@@ -39,7 +39,7 @@
       ansible.builtin.dnf:
         name:
           - "@postgresql:16/server"
-          - "postgresql:16/client"
+          - "@postgresql:16/client"
         state: present
 
 
