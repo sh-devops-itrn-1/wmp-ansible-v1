@@ -34,13 +34,12 @@
       ansible.builtin.dnf:
         name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
         state: present
-        disable_gpg_check: yes
 
     - name: Install PostgreSQL
       ansible.builtin.dnf:
         name:
           - "@postgresql:16/server"
-          - "postgresql:16"
+          - "postgresql:16/client"
         state: present
 
 
